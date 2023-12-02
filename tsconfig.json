@@ -1,12 +1,12 @@
 {
 	"compilerOptions": {
 	  "baseUrl": "./src",
-	  "paths": {
-		"@infra/*": ["infra/*"],
-		"@shared/*": ["shared/*"],
-		"@middlewares/*": ["middlewares/*"],
-		"@modules/*": ["modules/*"]
-	  },
+	//   "paths": {
+	// 	"@infra/*": ["infra/*"],
+	// 	"@shared/*": ["shared/*"],
+	// 	"@middlewares/*": ["middlewares/*"],
+	// 	"@modules/*": ["modules/*"]
+	//   },
 	  "downlevelIteration": true,
 	  "target": "es2018", /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
 	  "lib": [
