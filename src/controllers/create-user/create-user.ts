@@ -2,16 +2,16 @@ import validator from 'validator';
 
 import { HttRequest, HttpResponse } from '../../controllers/protocols';
 import { User } from '../../models/user';
-import { CreateUSerParams, ICreateUserController, ICreateUserRepository } from './protocols';
+import { CreateUserParams, ICreateUserController, ICreateUserRepository } from './protocols';
 
 export class CreateUserController implements ICreateUserController {
   constructor(private readonly createUserRepository: ICreateUserRepository) {}
-  async handle(httpRequest: HttRequest<CreateUSerParams>): Promise<HttpResponse<User>> {
+  async handle(httpRequest: HttRequest<CreateUserParams>): Promise<HttpResponse<User>> {
     try {
       // validar se body existe
       const requiredFields = ['firstName', 'lastName', 'email', 'password'];
       for (const field of requiredFields) {
-        if (!httpRequest?.body?.[field as keyof CreateUSerParams]?.length) {
+        if (!httpRequest?.body?.[field as keyof CreateUserParams]?.length) {
           return {
             statusCode: 400,
             body: 'Body invalido',
