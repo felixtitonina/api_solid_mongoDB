@@ -1,3 +1,4 @@
+import { badRequest, ok, serverError } from '../helpers';
 import { HttpRequest, HttpResponse, IController } from '../../controllers/protocols';
 import { User } from '../../models/user';
 import { IDeleteUserRepository } from './protocols';
@@ -5,26 +6,17 @@ import { IDeleteUserRepository } from './protocols';
 export class DeleteUserController implements IController {
   constructor(private readonly deleteUserRepositiry: IDeleteUserRepository) {}
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<User>> {
+  async handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<User | string>> {
     try {
       const id = httpRequest?.params?.id;
 
       if (!id) {
-        return {
-          statusCode: 400,
-          body: 'id não encontrado.',
-        };
+        return badRequest('id não encontrado.');
       }
       const user = await this.deleteUserRepositiry.deleteUser(id);
-      return {
-        statusCode: 200,
-        body: user,
-      };
+      return ok<User>(user);
     } catch (error) {
-      return {
-        statusCode: 500,
-        body: 'Erro interno do servidor.',
-      };
+      return serverError();
     }
   }
 }
