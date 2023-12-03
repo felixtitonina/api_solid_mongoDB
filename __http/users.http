@@ -23,3 +23,8 @@ Content-Type: application/json
 {
     "firstName": "John aaassssa"
 }
+
+
+###
+DELETE  http://localhost:3005/users/656bbc43c6d318d50b6b8dd0
+Content-Type: application/json
