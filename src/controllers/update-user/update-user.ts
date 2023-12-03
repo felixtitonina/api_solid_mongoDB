@@ -1,14 +1,20 @@
-import { HttpRequest, HttpResponse } from '../../controllers/protocols';
+import { HttpRequest, HttpResponse, IController } from '../../controllers/protocols';
 import { User } from '../../models/user';
-import { IUpdateUserController, UpdateUserParams, IUpdateUserRepository } from './protocols';
+import { UpdateUserParams, IUpdateUserRepository } from './protocols';
 
-export class UpdateUserController implements IUpdateUserController {
+export class UpdateUserController implements IController {
   constructor(private readonly updateUserRepository: IUpdateUserRepository) {}
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<User>> {
+  async handle(httpRequest: HttpRequest<UpdateUserParams>): Promise<HttpResponse<User>> {
     try {
       const id = httpRequest?.params?.id;
       const body = httpRequest?.body;
+
+      if (!body) {
+        return {
+          statusCode: 400,
+          body: 'Body invalido.',
+        };
+      }
 
       if (!id) {
         return {

@@ -1,8 +1,8 @@
-import { HttpRequest, HttpResponse } from '../../controllers/protocols';
+import { HttpRequest, HttpResponse, IController } from '../../controllers/protocols';
 import { User } from '../../models/user';
-import { IDeleteUserController, IDeleteUserRepository } from './protocols';
+import { IDeleteUserRepository } from './protocols';
 
-export class DeleteUserController implements IDeleteUserController {
+export class DeleteUserController implements IController {
   constructor(private readonly deleteUserRepositiry: IDeleteUserRepository) {}
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async handle(httpRequest: HttpRequest<any>): Promise<HttpResponse<User>> {
