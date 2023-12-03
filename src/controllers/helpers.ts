@@ -1,27 +1,27 @@
-import { HttpResponse } from './protocols';
+import { HttpResponse, HttpStatusCode } from './protocols';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const ok = <T>(body: any): HttpResponse<T> => ({
-  statusCode: 200,
+  statusCode: HttpStatusCode.OK,
   body,
 });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const created = <T>(body: any): HttpResponse<T> => ({
-  statusCode: 201,
+  statusCode: HttpStatusCode.CREATED,
   body,
 });
 
 export const badRequest = (messsage: string): HttpResponse<string> => {
   return {
-    statusCode: 400,
+    statusCode: HttpStatusCode.BAD_REQUEST,
     body: messsage,
   };
 };
 
 export const serverError = (): HttpResponse<string> => {
   return {
-    statusCode: 500,
+    statusCode: HttpStatusCode.SERVER_ERROR,
     body: 'Error interno.',
   };
 };
