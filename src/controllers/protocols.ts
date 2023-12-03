@@ -3,7 +3,7 @@ export interface HttpResponse<T> {
   body: T | string;
 }
 
-export interface HttRequest<B> {
+export interface HttpRequest<B> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   params?: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

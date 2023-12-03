@@ -1,12 +1,12 @@
 import validator from 'validator';
 
-import { HttRequest, HttpResponse } from '../../controllers/protocols';
+import { HttpRequest, HttpResponse } from '../../controllers/protocols';
 import { User } from '../../models/user';
 import { CreateUserParams, ICreateUserController, ICreateUserRepository } from './protocols';
 
 export class CreateUserController implements ICreateUserController {
   constructor(private readonly createUserRepository: ICreateUserRepository) {}
-  async handle(httpRequest: HttRequest<CreateUserParams>): Promise<HttpResponse<User>> {
+  async handle(httpRequest: HttpRequest<CreateUserParams>): Promise<HttpResponse<User>> {
     try {
       // validar se body existe
       const requiredFields = ['firstName', 'lastName', 'email', 'password'];

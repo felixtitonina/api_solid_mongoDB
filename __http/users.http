@@ -9,6 +9,17 @@ Content-Type: application/json
 {
     "firstName": "John",
     "lastName": "John",
-    "email": "John",
+    "email": "John@gmail.com",
     "password": "John"
+}
+
+
+
+
+###
+PATCH  http://localhost:3005/users/656bbc43c6d318d50b6b8dd0
+Content-Type: application/json
+
+{
+    "firstName": "John aaassssa"
 }

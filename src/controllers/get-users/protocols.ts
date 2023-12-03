@@ -1,5 +1,5 @@
-import { HttpResponse } from 'controllers/protocols';
-import { User } from 'models/user';
+import { HttpResponse } from '../../controllers/protocols';
+import { User } from '../../models/user';
 
 export interface IGetUsersController {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
